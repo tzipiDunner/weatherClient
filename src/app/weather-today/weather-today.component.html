@@ -1,0 +1,14 @@
+<input type="text" [(ngModel)]="city" required="required" placeholder="עיר" />
+<button mat-stroked-button color="Accent" (click)="getWeatherInformation()">לקבלת התחזית</button>
+<div *ngIf="show">
+    <div *ngFor="let item of days">
+        <p>תאריך{{item.date}}</p>
+        <p>:טמפרטורה ממוצעת {{item.day.avgtemp_c}}</p>
+        <p>מהירות הרוח ממוצעת {{item.day.avgvis_km}}</p>
+        <div *ngFor="let h of item.hour">
+            <p> שעה {{item.hour[x].time| date:'shortTime'}}</p>
+            <p> טמפרטורה{{h.temp_c}}</p>
+            <p> מהירות הרוח {{h.vis_km}}</p>
+            <br />
+        </div>
+    </div>
