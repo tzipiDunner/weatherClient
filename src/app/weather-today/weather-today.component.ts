@@ -12,22 +12,23 @@ import { DatePipe } from '@angular/common';
 export class WeatherTodayComponent implements OnInit {
   weatherJson: any;
   city: string;
-  x:number;
+  x: number;
   show: boolean = false;
   days: any[] = [];
-  constructor(public server: WeatherService,private datePipe: DatePipe) {;
-   }
+  constructor(public server: WeatherService, private datePipe: DatePipe) {
+    ;
+  }
   ngOnInit(): void {
   }
   getWeatherInformation() {
-    this.show=false;
-    let d =new Date();
+    this.show = false;
+    let d = new Date();
     this.x = d.getHours();
     this.server.getWeatherFor3Days(this.city).subscribe(succ => {
       this.weatherJson = succ;
       this.days = this.weatherJson.forecast.forecastday;
       console.log(this.weatherJson)
-    },err=>{console.log(err);});
+    }, err => { console.log(err); });
     this.show = true;
   }
 }
