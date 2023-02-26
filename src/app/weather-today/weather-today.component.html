@@ -2,18 +2,19 @@
 <br/>
 <br/>
 <button mat-stroked-button color="Accent" (click)="getWeatherInformation()">לקבלת התחזית</button>
-<div *ngIf="show">
-    <div *ngFor="let item of days">
+<div *ngIf="show" style="margin:20px;">
+    <div *ngFor="let item of days" >
         <p> תאריך {{item.date}}</p>
-        <p>טמפרטורה ממוצעת {{item.day.avgtemp_c}}</p>
+        <p>טמפרטורה ממוצעת {{item.day.avgtemp_c.toFixed(0)}}</p>
         <p>מהירות הרוח ממוצעת {{item.day.avgvis_km}} קמ"ש</p>
         <br/>
         <div style="display: flex;flex-direction: row;">
         <div *ngFor="let h of item.hour" style="margin: 25px;">
             <p> שעה {{item.hour[x].time| date:'shortTime'}}</p>
-            <p> טמפרטורה {{h.temp_c}}</p>
+            <p> טמפרטורה {{h.temp_c.toFixed(0)}}</p>
             <p> מהירות הרוח {{h.vis_km}} קמ"ש</p>
             <br />
         </div>
         </div>
     </div>
+</div>
